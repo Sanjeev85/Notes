@@ -1,21 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black_shade_1"
+    android:id="@+id/rl"
     tools:context=".AddEditNoteActivity">
 
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_margin="8dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv1"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_margin="3dp"
+            android:backgroundTint="#c3f09c"
+            app:cardCornerRadius="50dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv2"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_margin="3dp"
+            android:backgroundTint="#ffed37"
+            app:cardCornerRadius="50dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv3"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_margin="3dp"
+            android:backgroundTint="#9faeff"
+            app:cardCornerRadius="50dp" />
+    </LinearLayout>
+
     <!--edit text for note title-->
+    <!--edit text for note description-->
+
     <EditText
         android:id="@+id/idEdtNoteName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_below="@+id/ll"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+
         android:hint="Enter Note Title"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
-    <!--edit text for note description-->
 
     <EditText
         android:id="@+id/idEdtNoteDesc"
@@ -23,7 +61,10 @@
         android:layout_height="match_parent"
         android:layout_above="@id/idBtn"
         android:layout_below="@id/idEdtNoteName"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/black_shade_1"
         android:gravity="start|top"
         android:hint="Enter your Note Details"
@@ -39,7 +80,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/custom_button_back"
         android:text="Button"
         android:textAllCaps="false"

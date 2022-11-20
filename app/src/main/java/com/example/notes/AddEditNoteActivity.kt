@@ -1,20 +1,27 @@
 package com.example.notes
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RelativeLayout
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AddEditNoteActivity : AppCompatActivity() {
-        //on below line we are creating variables for our UI components.
+    //on below line we are creating variables for our UI components.
     lateinit var noteTitleEdt: EditText
     lateinit var noteEdt: EditText
     lateinit var saveBtn: Button
+    lateinit var cv1: CardView
+    lateinit var cv2: CardView
+    lateinit var cv3: CardView
 
     //on below line we are creating variable for viewmodal and and integer for our note id.
     lateinit var viewModal: NoteViewModal
@@ -23,7 +30,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit_note)
 
-          //on below line we are initlaiing our view modal.
+        //on below line we are initlaiing our view modal.
         viewModal = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
@@ -32,6 +39,38 @@ class AddEditNoteActivity : AppCompatActivity() {
         noteTitleEdt = findViewById(R.id.idEdtNoteName)
         noteEdt = findViewById(R.id.idEdtNoteDesc)
         saveBtn = findViewById(R.id.idBtn)
+        val rl = findViewById<RelativeLayout>(R.id.rl)
+        cv1 = findViewById(R.id.cv1)
+        cv2 = findViewById(R.id.cv2)
+        cv3 = findViewById(R.id.cv3)
+        cv1.setOnClickListener {
+            noteTitleEdt.setBackgroundColor(Color.parseColor("#c3f09c"))
+            noteEdt.setBackgroundColor(Color.parseColor("#c3f09c"))
+            noteTitleEdt.setHintTextColor(Color.BLACK)
+            rl.setBackgroundColor(Color.WHITE)
+            noteEdt.setHintTextColor(Color.BLACK)
+            noteEdt.setTextColor(Color.BLACK)
+            noteTitleEdt.setTextColor(Color.BLACK)
+        }
+        cv2.setOnClickListener {
+            rl.setBackgroundColor(Color.WHITE)
+            noteEdt.setTextColor(Color.BLACK)
+            noteTitleEdt.setTextColor(Color.BLACK)
+            noteTitleEdt.setHintTextColor(Color.BLACK)
+            noteEdt.setHintTextColor(Color.BLACK)
+            noteTitleEdt.setBackgroundColor(Color.parseColor("#ffed37"))
+            noteEdt.setBackgroundColor(Color.parseColor("#ffed37"))
+        }
+        cv3.setOnClickListener {
+            rl.setBackgroundColor(Color.WHITE)
+            noteEdt.setTextColor(Color.BLACK)
+            noteTitleEdt.setTextColor(Color.BLACK)
+            noteTitleEdt.setHintTextColor(Color.BLACK)
+            noteEdt.setHintTextColor(Color.BLACK)
+            noteTitleEdt.setBackgroundColor(Color.parseColor("#9faeff"))
+            noteEdt.setBackgroundColor(Color.parseColor("#9faeff"))
+        }
+
 
         //on below line we are getting data passsed via an intent.
         val noteType = intent.getStringExtra("noteType")
