@@ -11,12 +11,18 @@ import androidx.recyclerview.widget.RecyclerView
 class NoteRVAdapter(
     val context: Context,
     val noteClickDeleteInterface: NoteClickDeleteInterface,
-    val noteClickInterface: NoteClickInterface
+    val noteClickInterface: NoteClickInterface,
 ) :
     RecyclerView.Adapter<NoteRVAdapter.ViewHolder>() {
 
     //on below line we are creating a variable for our all notes list.
-    private val allNotes = ArrayList<Note>()
+    private var allNotes = ArrayList<Note>()
+
+    fun filterNotes(filterList: ArrayList<Note>) {
+        allNotes = filterList
+        notifyDataSetChanged()
+    }
+
 
     //on below line we are creating a view holder class.
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,7 +44,7 @@ class NoteRVAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //on below line we are setting data to item of recycler view.
         holder.noteTV.setText(allNotes.get(position).noteTitle)
-        holder.dateTV.setText("Last Updated : "+allNotes.get(position).timeStamp)
+        holder.dateTV.setText("Last Updated : " + allNotes.get(position).timeStamp)
         //on below line we are adding click listner to our delete image view icon.
         holder.deleteIV.setOnClickListener {
             //on below line we are calling a note click interface and we are passing a position to it.

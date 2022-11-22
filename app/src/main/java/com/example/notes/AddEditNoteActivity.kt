@@ -79,7 +79,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             val noteTitle = intent.getStringExtra("noteTitle")
             val noteDescription = intent.getStringExtra("noteDescription")
             noteID = intent.getIntExtra("noteId", -1)
-            saveBtn.setText("Update Note")
+            saveBtn.text = "Update Note"
             noteTitleEdt.setText(noteTitle)
             noteEdt.setText(noteDescription)
         } else {

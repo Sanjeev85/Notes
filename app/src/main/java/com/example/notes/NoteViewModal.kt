@@ -15,7 +15,9 @@ class NoteViewModal(application: Application) : AndroidViewModel(application) {
     init {
         val dao = NoteDatabase.getDatabase(application).getNotesDao()
         repository = NoteRepository(dao)
+        repository.allNotes.value?.sortedByDescending { it.timeStamp }
         allNotes = repository.allNotes
+
     }
 
     fun deleteNote(note: Note) = viewModelScope.launch(Dispatchers.IO) {
